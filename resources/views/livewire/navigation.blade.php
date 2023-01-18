@@ -1,4 +1,9 @@
-<header class="bg-trueGray-700">
+<style>
+    #navigation-menu {
+        height: calc(100vh - 4rem);
+    }
+</style>
+<header class="bg-trueGray-700 sticky top-0">
     <div class="container-menu flex items-center h-16">
         <a class="flex flex-col items-center justify-center px-4 bg-white bg-opacity-25 text-white cursor-pointer font-semibold h-full">
             <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -13,8 +18,8 @@
             <x-jet-application-mark class="block h-9 w-auto">></x-jet-application-mark>
         </a>
         @livewire('search')
-            <div class="mx-6 relative">
-                @auth()
+        <div class="mx-6 relative">
+            @auth()
                 <x-jet-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
@@ -48,22 +53,44 @@
                         </form>
                     </x-slot>
                 </x-jet-dropdown>
-                @else
-                    <x-jet-dropdown align="right" width="48">
-                        <x-slot name="trigger">
-                            <i class="fas fa-user-circle text-white text-3xl cursor-pointer"></i>
-                        </x-slot>
-                        <x-slot name="content">
-                            <x-jet-dropdown-link href="{{ route('login') }}">
-                                {{ __('Login') }}
-                            </x-jet-dropdown-link>
-                            <x-jet-dropdown-link href="{{ route('register') }}">
-                                {{ __('Register') }}
-                            </x-jet-dropdown-link>
-                        </x-slot>
-                    </x-jet-dropdown>
-                @endauth
-            </div>
-            @livewire('dropdown-cart')
+            @else
+                <x-jet-dropdown align="right" width="48">
+                    <x-slot name="trigger">
+                        <i class="fas fa-user-circle text-white text-3xl cursor-pointer"></i>
+                    </x-slot>
+                    <x-slot name="content">
+                        <x-jet-dropdown-link href="{{ route('login') }}">
+                            {{ __('Login') }}
+                        </x-jet-dropdown-link>
+                        <x-jet-dropdown-link href="{{ route('register') }}">
+                            {{ __('Register') }}
+                        </x-jet-dropdown-link>
+                    </x-slot>
+                </x-jet-dropdown>
+            @endauth
+        </div>
+        @livewire('dropdown-cart')
     </div>
+    <nav id="navigation-menu" class="bg-trueGray-700 bg-opacity-25 w-full absolute">
+        <div class="container-menu h-full">
+            <div class="grid grid-cols-4 h-full relative">
+                <ul class="bg-white">
+                    @foreach($categories as $category)
+                        <li class="text-trueGray-500 hover:bg-orange-500 hover:text-white">
+                            <a href="" class="py-2 px-4 text-sm flex items-center">
+ <span class="flex justify-center w-9">
+ {!! $category->icon !!}
+ </span>
+                                {{ $category->name }}
+                            </a>
+                            <div class="bg-red-500 absolute w-3/4 h-full top-0 right-0">
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+                <div class="col-span-3 bg-gray-100">
+                </div>
+            </div>
+        </div>
+    </nav>
 </header>
