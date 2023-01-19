@@ -5,7 +5,7 @@
            class="flex flex-col items-center justify-center order-last md:order-first px-6 sm:px-4 px-4 bg-white bg-opacity-25 text-white cursor-pointer font-semibold h-full">
             <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                 <path class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4
-12h16M4 18h16"/>
+                12h16M4 18h16"/>
             </svg>
             <span class="text-sm hidden sm:block">
             Categorías
@@ -82,9 +82,9 @@
                     @foreach($categories as $category)
                         <li class="navigation-link text-trueGray-500 hover:bg-orange-500 hover:text-white">
                             <a href="" class="py-2 px-4 text-sm flex items-center">
- <span class="flex justify-center w-9">
- {!! $category->icon !!}
- </span>
+                                <span class="flex justify-center w-9">
+                                    {!! $category->icon !!}
+                                </span>
                                 {{ $category->name }}
                             </a>
                             <div class="navigation-submenu bg-gray-100 absolute w-3/4 h-full top-0 right-0 hidden">
@@ -106,48 +106,51 @@
                 @foreach($categories as $category)
                     <li class="text-trueGray-500 hover:bg-orange-500 hover:text-white">
                         <a href="" class="py-2 px-4 text-sm flex items-center">
- <span class="flex justify-center w-9">
- {!! $category->icon !!}
- </span>
+                            <span class="flex justify-center w-9">
+                                {!! $category->icon !!}
+                            </span>
                             {{ $category->name }}
                         </a>
                     </li>
                 @endforeach
             </ul>
             <p class="text-trueGray-500 px-6 my-2">USUARIOS</p>
+
+            @livewire('cart-movil')
+
             @auth
                 <a href="{{ route('profile.show') }}" class="py-2 px-4 text-sm flex items-center text-trueGray-500 hover:bg-orange-500
-hover:text-white">
- <span class="flex justify-center w-9">
- <i class="far fa-address-card"></i>
- </span>
+                hover:text-white">
+                <span class="flex justify-center w-9">
+                    <i class="far fa-address-card"></i>
+                </span>
                     Perfil
                 </a>
                 <a href=""
-                   onclick="event.preventDefault();
- document.getElementById('logout-form').submit()"
-                   class="py-2 px-4 text-sm flex items-center text-trueGray-500 hover:bg-orange-500 hover:text-white">
- <span class="flex justify-center w-9">
- <i class="fas fa-sign-out-alt"></i>
- </span>
-                    Cerrar sesión
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit()"
+                    class="py-2 px-4 text-sm flex items-center text-trueGray-500 hover:bg-orange-500 hover:text-white">
+                    <span class="flex justify-center w-9">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </span>
+                        Cerrar sesión
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                     @csrf
                 </form>
             @else
                 <a href="{{ route('login') }}" class="py-2 px-4 text-sm flex items-center text-trueGray-500 hover:bg-orange-500
-hover:text-white">
- <span class="flex justify-center w-9">
- <i class="fas fa-user-circle"></i>
- </span>
+                    hover:text-white">
+                    <span class="flex justify-center w-9">
+                    <i class="fas fa-user-circle"></i>
+                    </span>
                     Iniciar sesión
                 </a>
                 <a href="{{ route('register') }}" class="py-2 px-4 text-sm flex items-center text-trueGray-500 hover:bg-orange-500
-hover:text-white">
- <span class="flex justify-center w-9">
- <i class="fas fa-fingerprint"></i>
- </span>
+                hover:text-white">
+                <span class="flex justify-center w-9">
+                <i class="fas fa-fingerprint"></i>
+                </span>
                     Registrar
                 </a>
             @endauth
