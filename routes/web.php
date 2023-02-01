@@ -20,6 +20,10 @@ Route::get('/', WelcomeController::class);
 
 Route::get('categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
 
+Route::get('/deletecart', function () {
+    \Cart::destroy();
+});
+
 Route::get('products/{product}', [ProductsController::class, 'show'])->name('products.show');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
