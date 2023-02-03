@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Product;
+use App\Models\Size;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 function quantity($product_id, $color_id = null, $size_id = null)
 {
@@ -27,8 +30,9 @@ function qty_added($product_id, $color_id = null, $size_id = null)
     } else {
         return 0;
     }
+}
 
-    function qty_available($product_id, $color_id = null, $size_id = null){
-        return quantity($product_id, $color_id, $size_id) - qty_added($product_id, $color_id, $size_id);
-    }
+function qty_available($product_id, $color_id = null, $size_id = null)
+{
+    return quantity($product_id, $color_id, $size_id) - qty_added($product_id, $color_id, $size_id);
 }
