@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,8 @@ Route::get('categories/{category}', [CategoryController::class, 'show'])->name('
 Route::get('/deletecart', function () {
     \Cart::destroy();
 });
+
+Route::get('search', SearchController::class)->name('search');
 
 Route::get('products/{product}', [ProductsController::class, 'show'])->name('products.show');
 
