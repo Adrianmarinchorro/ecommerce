@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Livewire\CreateOrder;
 use App\Http\Livewire\ShoppingCart;
 use Illuminate\Support\Facades\Route;
 
@@ -22,9 +23,7 @@ Route::get('/', WelcomeController::class);
 
 Route::get('categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
 
-Route::get('/deletecart', function () {
-    \Cart::destroy();
-});
+Route::get('orders/create', CreateOrder::class)->middleware('auth')->name('orders.create');
 
 Route::get('shopping-cart', ShoppingCart::class)->name('shopping-cart');
 
