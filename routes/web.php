@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\WelcomeController;
@@ -34,3 +35,5 @@ Route::get('products/{product}', [ProductsController::class, 'show'])->name('pro
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('orders/{order}/payment', [OrderController::class, 'payment'])->name('orders.payment');
