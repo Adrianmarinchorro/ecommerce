@@ -2,11 +2,18 @@
 
 namespace App\Providers;
 
+use App\Models\Order;
+use App\Policies\OrderPolicy;
 use Illuminate\Support\ServiceProvider;
 use Faker\Generator;
 
 class AppServiceProvider extends ServiceProvider
 {
+
+    protected $policies = [
+        Order::class => OrderPolicy::class,
+    ];
+
     /**
      * Register any application services.
      *
