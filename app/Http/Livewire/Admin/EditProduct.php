@@ -17,6 +17,8 @@ class EditProduct extends Component
     public $product, $categories, $subcategories, $brands;
     public $category_id;
 
+    protected $listeners = ['refreshProduct'];
+
     protected $rules = [
         'category_id' => 'required',
         'product.subcategory_id' => 'required',
@@ -88,6 +90,11 @@ class EditProduct extends Component
 
         $image->delete();
 
+        $this->product = $this->product->fresh();
+    }
+
+    public function refreshProduct()
+    {
         $this->product = $this->product->fresh();
     }
 
