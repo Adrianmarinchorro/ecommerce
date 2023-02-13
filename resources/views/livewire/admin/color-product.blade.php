@@ -34,6 +34,7 @@
         </x-jet-button>
     </div>
 
+    @if($productColors->count())
     <div class="bg-white shadow-lg rounded-lg p-6">
         <table>
             <thead>
@@ -67,7 +68,8 @@
                             wire:target="edit({{ $color->pivot->id }})">
                             Actualizar
                         </x-jet-secondary-button>
-                        <x-jet-danger-button>
+                        <x-jet-danger-button
+                            wire:click="$emit('deletePivot', {{ $color->pivot->id }})">
                             Eliminar
                         </x-jet-danger-button>
                     </td>
@@ -76,6 +78,7 @@
             </tbody>
         </table>
     </div>
+    @endif
 
     <x-jet-dialog-modal wire:model="open">
         <x-slot name="title">
@@ -97,7 +100,8 @@
                 <x-jet-label>
                     Cantidad
                 </x-jet-label>
-                <x-jet-input class="w-full" wire:model="pivot_quantity" type="number" placeholder="Ingrese una cantidad" />
+                <x-jet-input class="w-full" wire:model="pivot_quantity" type="number"
+                             placeholder="Ingrese una cantidad"/>
             </div>
         </x-slot>
         <x-slot name="footer">
@@ -111,3 +115,28 @@
     </x-jet-dialog-modal>
 
 </div>
+
+@push('scripts')
+    <script>
+        Livewire.on('deletePivot', pivot => {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Livewire.emit('delete', pivot);
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                }
+            })
+        })
+    </script>
+@endpush
