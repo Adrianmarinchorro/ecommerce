@@ -12,7 +12,7 @@ class CreateCategory extends Component
 {
     use WithFileUploads;
 
-    public $brands, $image;
+    public $brands, $categories, $image;
 
     protected $rules = [
         'createForm.name' => 'required',
@@ -41,7 +41,7 @@ class CreateCategory extends Component
     public function mount()
     {
         $this->getBrands();
-
+        $this->getCategories();
         $this->image = 1;
     }
 
@@ -74,6 +74,15 @@ class CreateCategory extends Component
         $this->image = 2;
 
         $this->reset('createForm');
+
+        $this->getCategories();
+
+        $this->emit('saved');
+    }
+
+    public function getCategories()
+    {
+        $this->categories = Category::all();
     }
 
     public function render()
