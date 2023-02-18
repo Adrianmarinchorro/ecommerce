@@ -46,6 +46,11 @@ class EditProduct extends Component
     }
 
     public function updatedProductName($value){
+        //arreglo evitar que pete la ruta si borramos el nombre debido
+        //a que el model binding va con el slug
+        if(Str::length($value) < 1){
+            return;
+        }
         $this->product->slug = Str::slug($value);
     }
 
