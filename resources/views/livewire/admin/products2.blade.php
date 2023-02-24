@@ -9,18 +9,23 @@
                 Agregar producto
             </x-button-link>
 
-            <select class="form-select rounded-lg"
-                    wire:model="paginate">
-                <option value="">Seleccionar paginacion</option>
-                <option value="15">15</option>
-                <option value="10">10</option>
-                <option value="5">5</option>
-            </select>
-
         </div>
     </x-slot>
 
     <x-table-responsive>
+        <div>
+            <select class="form-select rounded-lg"
+                    wire:model="paginate" label="Paginación">
+                <option value="">Seleccionar paginacion</option>
+                @foreach($paginacionDisponible as $option)
+                    <option value="{{$option}}">
+                        {{ $option }}
+                    </option>
+                @endforeach
+
+            </select>
+        </div>
+
         <div class="px-6 py-4">
             <x-jet-input class="w-full"
                          wire:model="search"
