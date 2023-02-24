@@ -8,6 +8,15 @@
             <x-button-link class="ml-auto" href="{{route('admin.products.create')}}">
                 Agregar producto
             </x-button-link>
+
+            <select class="form-select rounded-lg"
+                    wire:model="paginate">
+                <option value="">Seleccionar paginacion</option>
+                <option value="15">15</option>
+                <option value="10">10</option>
+                <option value="5">5</option>
+            </select>
+
         </div>
     </x-slot>
 

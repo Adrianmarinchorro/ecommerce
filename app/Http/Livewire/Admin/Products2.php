@@ -10,7 +10,13 @@ class Products2 extends Component
 {
     use WithPagination;
 
-    public $search;
+    public $search, $paginate = 10;
+
+    public function updatePaginate($value)
+    {
+        $this->paginate = $value;
+        $this->resetPage();
+    }
 
     public function updatingSearch()
     {
@@ -20,7 +26,7 @@ class Products2 extends Component
 
     public function render()
     {
-        $products = Product::where('name', 'LIKE', "%{$this->search}%")->paginate(10);
+        $products = Product::where('name', 'LIKE', "%{$this->search}%")->paginate($this->paginate);
 
         return view('livewire.admin.products2', compact('products'))->layout('layouts.admin');
     }
