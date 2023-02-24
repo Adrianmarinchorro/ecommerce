@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Filters\ProductFilter;
+use App\Queries\ProductBuilder;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -60,6 +62,16 @@ class Product extends Model
         } else {
             return $this->quantity;
         }
+    }
+
+    public function newEloquentBuilder($query): ProductBuilder
+    {
+        return new ProductBuilder($query);
+    }
+
+    public function newQueryFilter(): ProductFilter
+    {
+        return new ProductFilter();
     }
 
 }
