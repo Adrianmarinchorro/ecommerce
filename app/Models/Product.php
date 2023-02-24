@@ -62,4 +62,9 @@ class Product extends Model
         }
     }
 
+    public function getSolded()
+    {
+        return $this->sold;
+    }
+
 }
