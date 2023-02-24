@@ -26,6 +26,56 @@
             </select>
         </div>
 
+        <div>
+
+            <div>
+
+                <h2>Columnas Visibles</h2>
+
+            <div class="drop-menu skills-list">
+                <label for="Nombre">
+                    <input name="column[]" value="" type="checkbox">
+                    Nombre
+                </label>
+
+                <label for="">
+                    <input name="column[]" value="" type="checkbox">
+                    Categoría
+                </label>
+                <label for="">
+                    <input name="column[]" value="" type="checkbox">
+                    Marca
+                </label>
+
+                <label for="">
+                    <input name="column[]" value="" type="checkbox">
+                    Estado
+                </label>
+
+                <label for="">
+                    <input name="column[]" value="" type="checkbox">
+                    Ventas
+                </label>
+
+                <label for="">
+                    <input name="column[]" value="" type="checkbox">
+                    Stock
+                </label>
+
+                <label for="">
+                    <input name="column[]" value="" type="checkbox">
+                    Precio
+                </label>
+
+                <label for="">
+                    <input name="column[]" value="" type="checkbox">
+                    Fecha
+                </label>
+            </div>
+            </div>
+
+        </div>
+
         <div class="px-6 py-4">
             <x-jet-input class="w-full"
                          wire:model="search"
