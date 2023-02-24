@@ -7,6 +7,7 @@ use App\Http\Livewire\Admin\BrandComponent;
 use App\Http\Livewire\Admin\CreateProduct;
 use App\Http\Livewire\Admin\DepartmentComponent;
 use App\Http\Livewire\Admin\EditProduct;
+use App\Http\Livewire\Admin\Products2;
 use App\Http\Livewire\Admin\ShowCategory;
 use App\Http\Livewire\Admin\ShowCity;
 use App\Http\Livewire\Admin\ShowDepartment;
@@ -15,6 +16,7 @@ use App\Http\Livewire\Admin\UserComponent;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', ShowProducts::class)->name('admin.index');
+Route::get('/products2', Products2::class)->name('admin.products2');
 Route::get('products/create', CreateProduct::class)->name('admin.products.create');
 Route::get('products/{product}/edit', EditProduct::class)->name('admin.products.edit');
 Route::post('product/{product}/files', [ProductController::class, 'files'])->name('admin.products.files');
